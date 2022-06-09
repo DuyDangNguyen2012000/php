@@ -184,6 +184,7 @@
     }
 
     function tang(id) {
+        console.log(1)
         $.ajax({
             url: "/update-item/" + id,
             type: 'POST',

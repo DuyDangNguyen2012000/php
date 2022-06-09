@@ -11,6 +11,7 @@ use App\Models\Media;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
@@ -110,7 +111,6 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
         $product = Product::find($id);
         $delete_images_src = [];
         if($request->has('thumbnail_src')) {

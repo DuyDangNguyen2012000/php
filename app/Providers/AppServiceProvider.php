@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
         ->where('sanpham.soluong','>',0)
         ->where('sanpham.tinhtrang',1)
         ->orderByDesc('sanpham.id_sp')
-        ->limit(8)
+        ->limit(12)
         ->get(['sanpham.*', 'dmsp.ten_dmsp AS cate_title', 'ncc.ten_ncc AS supplier_title']);
         View::share('categories', Category::where('tinhtrang',1)->get());
         View::share('products', $products);

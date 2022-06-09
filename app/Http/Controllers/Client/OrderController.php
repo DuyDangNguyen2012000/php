@@ -62,6 +62,7 @@ class OrderController extends Controller
                 ]);
             }
             foreach($cart->items as $row){
+                if ($row['qty']>0) {
                 OrderDetail::create([
                     'id_sp' => $row['item']['id_sp'],
                     'dongia' => $row['price'],
@@ -74,6 +75,7 @@ class OrderController extends Controller
                 if ($product->soluong <= 0) {
                     Product::where('id_sp',$row['item']['id_sp'])->update(['tinhtrang' => 0]);
                 }
+            }
             }
         } catch (\Exception $e) {
             return redirect()->route('client.checkout')->with('invalid', $e->getMessage());

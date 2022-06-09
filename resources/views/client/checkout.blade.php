@@ -77,7 +77,9 @@
                                     $total = 0;
                                 @endphp
                                 @foreach ($cart->items as $row)
-                                    <li>{{ strlen($row['item']['ten_sp']) > 20 ? substr($row['item']['ten_sp'],0,20)."..." : $row['item']['ten_sp'] }} <span>{{ number_format((strtotime(date('Y-m-d')) < strtotime($row['item']['thoigianbatdau']) || strtotime(date('Y-m-d')) > strtotime($row['item']['thoigianketthuc'])) ? $row['item']['giatien'] * $row['qty'] : $row['item']['giakhuyenmai'] * $row['qty'],-3,',',',') }} VND</span></li>
+                                    @if($row['qty']>0)
+                                    <li>{{ strlen($row['item']['ten_sp']) > 20 ? substr($row['item']['ten_sp'],0,8)."..." : $row['item']['ten_sp'] }} <span>{{ number_format((strtotime(date('Y-m-d')) < strtotime($row['item']['thoigianbatdau']) || strtotime(date('Y-m-d')) > strtotime($row['item']['thoigianketthuc'])) ? $row['item']['giatien'] * $row['qty'] : $row['item']['giakhuyenmai'] * $row['qty'],-3,',',',') }} VND</span></li>
+                                    @endif
                                 @endforeach
                             </ul>
                             @php

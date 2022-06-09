@@ -34,18 +34,18 @@
                 @elseif ($orderBig->tinhtrang === 5)
                 {{ 'Hoàn' }}
                 @endif
-                @if ( ($orderBig->tinhtrang === 1)|| ($orderBig->tinhtrang === 4))
+                @if ( ($orderBig->tinhtrang === 1) ||  ($orderBig->tinhtrang === 0)|| ($orderBig->tinhtrang === 4))
                 <form style="margin-bottom: 1rem;" method="POST" action="{{ route('order.cancel', ['id' => $orderBig->id_donhang]) }}">
                     @csrf
                     <select name="status" class="status" style="padding:0.4rem 0;outline:none;">
-                        @if ($orderBig->tinhtrang === 1)
+                        @if ($orderBig->tinhtrang === 1 || $orderBig->tinhtrang === 0)
                         <option value="3" selected>Hủy</option>
                         @elseif ($orderBig->tinhtrang === 4)
                         <option value="2" selected>Hoàn thành</option>
                         <option value="5">Hoàn</option>
                         @endif
                     </select>
-                    <button type="submit" class="btn btn-primary" name="submit">Hủy đơn hàng</button>
+                    <button type="submit" class="btn btn-primary" name="submit">Xác nhận</button>
                 </form>
                 @endif
                 <table class="table table-bordered">

@@ -12,11 +12,13 @@ use App\Models\Reply;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
+use Illuminate\Support\Facades\Log;
+
 class ProductController extends Controller
 {
     public function product()
     {
-        $products = Product::where('soluong', '>', 0)->where('tinhtrang', 1)->paginate(9);
+        $products = Product::where('soluong', '>', 0)->where('tinhtrang', 1)->paginate(12);
         $product_slide_1 = Product::where('soluong', '>', 0)->where('tinhtrang', 1)->orderBy('id_sp', 'DESC')->limit(3)->get();
         $product_slide_2 = Product::where('soluong', '>', 0)->where('tinhtrang', 1)->orderBy('id_sp', 'DESC')->skip(3)->limit(3)->get();
         return view('client.product-grid', compact('products', 'product_slide_1', 'product_slide_2'));
@@ -127,7 +129,8 @@ class ProductController extends Controller
                 'status' => 'success',
                 "data" => $result
             ]);
-        } else {
+        } 
+        else {
             return response()->json([
                 'status' => 'failed',
                 "message" => "Số lượng không hợp lệ"

@@ -12,7 +12,7 @@
                         <div class="chart">
                             @foreach ($order1 as $item)
 
-                            <div class="col-canvas" style="height: {{(($item->sum)/($sum2[0] ->sum))*100 + 10}}%;">
+                            <div class="col-canvas" style="height: {{(($item->sum)/($sum2[0] ->sum))*100 + 30}}%;">
                                 <p>{{($item->sum)/ 1000}}K</p><span>{{$item->month}}</span>
                             </div>
                             @endforeach
